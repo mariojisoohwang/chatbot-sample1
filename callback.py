@@ -1,5 +1,5 @@
 from dto import ChatbotRequest
-from samples import simple_text
+from samples import simple_text_sample
 import aiohttp
 import time
 import logging
