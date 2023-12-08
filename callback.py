@@ -11,8 +11,8 @@ async def callback_handler(request: ChatbotRequest) -> dict:
 
     url = request.userRequest.callbackUrl
     payload = list_card
-    time.sleep(3.0)
 
-    async with aiohttp.ClientSession() as session:
-        async with session.post(url=url, json=payload) as resp:
-            result = await resp.json()
+    if url:
+        async with aiohttp.ClientSession() as session:
+            async with session.post(url=url, json=payload) as resp:
+                result = await resp.json()
