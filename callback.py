@@ -16,3 +16,6 @@ async def callback_handler(request: ChatbotRequest) -> dict:
         async with aiohttp.ClientSession() as session:
             async with session.post(url=url, json=payload) as resp:
                 result = await resp.json()
+                logger.info("result=" str(result))
+    else:
+        logger.info("empty url")
