@@ -12,7 +12,15 @@ async def callback_handler(request: ChatbotRequest) -> dict:
     time.sleep(1.0)
     
     url = request.userRequest.callbackUrl
-    payload = simple_text_sample
+    
+    payload = {
+        'version': '2.0',
+        'template': {
+            'outputs': [
+                {'simpleText': '콜백 응답'}
+            ]
+        }
+    }
 
     if url:
         async with aiohttp.ClientSession() as session:
