@@ -1,5 +1,5 @@
 from dto import ChatbotRequest
-from samples import list_card
+from samples import simple_text
 import aiohttp
 import time
 import logging
@@ -9,8 +9,10 @@ logger = logging.getLogger("Callback")
 
 async def callback_handler(request: ChatbotRequest) -> dict:
 
+    time.sleep(1.0)
+    
     url = request.userRequest.callbackUrl
-    payload = list_card
+    payload = simple_text_sample
 
     if url:
         async with aiohttp.ClientSession() as session:
