@@ -3,6 +3,7 @@ from samples import list_card
 import aiohttp
 import time
 import logging
+import json
 
 logger = logging.getLogger("Callback")
 
@@ -13,6 +14,6 @@ async def callback_handler(request: ChatbotRequest) -> dict:
     time.sleep(3.0)
 
     async with aiohttp.ClientSession() as session:
-        async with session.post(url=url, json=payload) as resp:
+        async with session.post(url=url, json=json.dumps(payload)) as resp:
             result = await resp.json()
             logger.info("callback response from url={} json={}".format(url, result))
